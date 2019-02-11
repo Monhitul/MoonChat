@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>MoonChat登录页</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/vector.js"></script>
+
+</head>
+<body>
+
+<div id="container">
+    <div id="output">
+        <div id="containerT">
+            <h1>用户登录</h1>
+            <div class="avater-img">
+                <img src="image/avatar.PNG">
+            </div>
+            <form class="form" id="entry_form">
+                <input type="text" placeholder="用户名" id="entry_name">
+                <input type="password" placeholder="密码" id="entry_password">
+                <button type="button" id="entry_btn">登录</button>
+                <button type="button" id="register_btn" onclick="gotoRegister()">注册</button>
+            </form>
+            <div class="show_tip">
+                <p>这是是显示提示信息的</p>
+            </div>
+        </div>
+
+        <div id="containerR">
+            <h1>用户注册</h1>
+            <form class="form" id="register_form">
+                <input type="text" placeholder="用户名" id="register_name">
+                <input type="password" placeholder="密码" id="register_password">
+                <input type="password" placeholder="确认密码" id="check_password">
+                <button type="button" id="sure_register" onclick="toRegister()">注册</button>
+            </form>
+            <div class="show_tip">
+                <p>这是是显示提示信息的</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        Victor("container", "output");   //登录背景函数
+        $("#entry_name").focus();
+        $(document).keydown(function(event){
+            if(event.keyCode==13){
+                $("#entry_btn").click();
+            }
+        });
+    });
+    // 显示注册页面
+    function gotoRegister() {
+        document.getElementById("containerT").style.display="none";
+        document.getElementById("containerR").style.display="block";
+    }
+    // 开始注册操作
+    function toRegister() {
+        document.getElementById("containerT").style.display="block";
+        document.getElementById("containerR").style.display="none";
+    }
+</script>
+</body>
+</html>
