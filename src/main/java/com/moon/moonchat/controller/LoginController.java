@@ -1,7 +1,6 @@
 package com.moon.moonchat.controller;
 
 import com.moon.moonchat.entity.User;
-import com.moon.moonchat.entity.UserLogin;
 import com.moon.moonchat.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
