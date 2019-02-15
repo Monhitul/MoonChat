@@ -9,7 +9,9 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>-->
     <script type="text/javascript" src="js/vector.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
 
 </head>
 <body>
@@ -24,11 +26,11 @@
             <form class="form" id="entry_form">
                 <input type="text" placeholder="用户名" id="entry_name">
                 <input type="password" placeholder="密码" id="entry_password">
-                <button type="button" id="entry_btn">登录</button>
+                <button type="button" id="entry_btn" onclick="toEntry()">登录</button>
                 <button type="button" id="register_btn" onclick="gotoRegister()">注册</button>
             </form>
-            <div class="show_tip">
-                <p>这是是显示提示信息的</p>
+            <div id="entry_tip">
+                <!--<p>这是是显示提示信息的</p>-->
             </div>
         </div>
 
@@ -40,8 +42,8 @@
                 <input type="password" placeholder="确认密码" id="check_password">
                 <button type="button" id="sure_register" onclick="toRegister()">注册</button>
             </form>
-            <div class="show_tip">
-                <p>这是是显示提示信息的</p>
+            <div id="register_tip">
+                <!--<p>这是是显示提示信息的</p>-->
             </div>
         </div>
     </div>
@@ -57,16 +59,6 @@
             }
         });
     });
-    // 显示注册页面
-    function gotoRegister() {
-        document.getElementById("containerT").style.display="none";
-        document.getElementById("containerR").style.display="block";
-    }
-    // 开始注册操作
-    function toRegister() {
-        document.getElementById("containerT").style.display="block";
-        document.getElementById("containerR").style.display="none";
-    }
 </script>
 </body>
 </html>

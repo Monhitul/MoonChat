@@ -68,7 +68,7 @@ form button:hover{background-color:#f5f7f9}
     background-color:#0cfff7;
 }
 
-.show_tip{
+.entry_tip, .register_tip{
     color: #ff0d24;
     font-size: small;
 }
