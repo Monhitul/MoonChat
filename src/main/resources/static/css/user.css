@@ -1,0 +1,91 @@
+body{
+    /*float: right;*/
+    /*margin-right: 40%;*/
+}
+.title{
+    margin-left: 25%;
+    margin-top: 20px;
+    margin-bottom: 18px;
+}
+.title h1{
+    font-size: 23px;
+    font-family: "Engravers MT";
+}
+#main{
+    display: flex;
+    justify-content: center;
+}
+
+/*好友列表区域*/
+#friends-list{
+    float: left;
+    width: 245px;
+    height: 550px;
+    /*background-color: red;*/
+}
+#user-infor{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 80px;
+    background-color: #39ffac;
+}
+#user-infor img{
+    width: 48px;
+    height: 48px;
+}
+.one-friend{
+    width: 100%;
+    height: 70px;
+    background-color: #ff7fbc;
+    border: 1px solid #000;
+}
+.one-friend img{
+    width: 45px;
+    height: 45px;
+    margin-top: 12px;
+}
+/*聊天区域*/
+#friend-name{
+    height: 30px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 18px;
+    font-family: "Microsoft YaHei UI";
+    background-color: #6fc6ff;
+}
+#show-content{
+    height: 400px;
+    width: 600px;
+    border: 1px solid #ccc;
+    margin-bottom: 2px;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 2px 1px 3px rgba(0, 0, 0, 0.05);
+
+    overflow: auto;
+}
+.own-info, .other-info{
+    width: 50%;
+    height: 50px;
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    border: 1px solid #000;
+    display: block;
+}
+.own-info{
+    float: right;
+    margin-left: 5px;
+    background-color: #15bc6c;
+}
+
+.other-info{
+    float: left;
+    margin-right: 5px;
+    background-color: #fafff1;
+}
+
+#myEditor{
+
+}

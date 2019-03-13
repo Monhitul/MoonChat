@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聊天室</title>
+    <link rel="stylesheet" type="text/css" href="css/chatroom.css">
+</head>
+<body>
+    <div id="Area">
+        <div id="userInfo">
+            <span id="userUid"></span>
+            <span id="userName"></span>
+        </div>
+        <div id="chatArea">
+            <div id="chatList">
+                <!--<span class="chatContent"></span>-->
+            </div>
+        </div>
+    </div>
+    <div id="sendArea">
+        <input type="text" id="chatInput">
+        <button onclick="toSend()">发送</button>
+    </div>
+</body>
+<script type="text/javascript">
+    window.onload = connectWebSocket();
+
+    var uuid = document.getElementById("userUid");
+    var uname = document.getElementById("userName");
+    uuid.innerHTML += userInfo.uid;
+    uname.innerHTML += userInfo.nickname;
+
+    //建立WebSocket连接
+    function connectWebSocket(){
+        console.log("开始...");
+
+        //建立webSocket连接
+        websocket = new WebSocket("ws://127.0.0.1/moonchat/socket/ID="+userInfo.uid);
+
+        //打开webSokcet连接时，回调该函数
+        websocket.onopen = function () {
+            console.log("onpen");
+        }
+
+        //关闭webSocket连接时，回调该函数
+        websocket.onclose = function () {
+            //关闭连接
+            console.log("onclose");
+        }
+
+        //接收信息
+        websocket.onmessage = function (msg) {
+            console.log(msg.data);
+            document.getElementById("chatList").innerHTML += msg.data;
+            document.getElementById("chatList").innerHTML += "<br>";
+        }
+    }
+
+    //发送消息
+    function toSend() {
+        var content = document.getElementById("chatInput");
+        if(content.value == "")
+            alert("发送内容不能为空");
+        else{
+            var postValue={};
+            postValue.id = userInfo.uid;
+            // postValue.message=$("#content").val();
+            postValue.message = content.value;
+            postValue.towho = "all";
+            websocket.send(JSON.stringify(postValue));
+            content.value = "";
+        }
+    }
+
+    //关闭连接
+    function closeWebSocket(){
+        if(websocket != null) {
+            websocket.close();
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/world.css">
+    <script type="text/javascript" src="js/world.js"/>
+</head>
+<body>
+    <div id="infor-head">
+        <span>微信公众号：Monhitul</span>
+        <span>学习所用，不作其他用途</span>
+    </div>
+    <div id="head-part">
+        <button id="btn1" onclick="showPrivate()">私聊</button>
+        <button id="btn2" onclick="showRoom()">群聊</button>
+        <button id="btn3" onclick="showWorld()">世界</button>
+    </div>
+    <div id="main-part">
+        <div id="private-chat" style="display: block;">
+            这里是私聊页面
+        </div>
+        <div id="chat-room" style="display: none;">
+            这里是群聊页面
+        </div>
+        <div id="world" style="display: none;">
+            <div id="world-title">
+                世界频道
+            </div>
+            <div id="world-content">
+
+            </div>
+            <!--<div>-->
+                <!--<input type="text" id="world-input">-->
+                <!--<button onclick="worldSend()">发送</button>-->
+            <!--</div>-->
+            <div type="text/plain" id="world-editor" style="width:705px;height:100px;overflow: hidden;">
+            </div>
+            <button onclick="worldSend()">发送</button>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+
+    //三个显示区域
+    var privateChat = document.getElementById("private-chat");
+    var roomChat = document.getElementById("chat-room");
+    var worldChat = document.getElementById("world");
+    // 三个按钮
+    var privateBtn = document.getElementById("btn1");
+    var roomBtn = document.getElementById("btn2");
+    var worldBtn = document.getElementById("btn3");
+
+    function showPrivate() {
+        privateChat.style.display = "block";
+        roomChat.style.display = "none";
+        worldChat.style.display = "none";
+        privateBtn.style.backgroundColor = "#5c9dff";
+        roomBtn.style.backgroundColor = "#d7d7d7";
+        worldBtn.style.backgroundColor = "#d7d7d7";
+    }
+    function showRoom() {
+        privateChat.style.display = "none";
+        roomChat.style.display = "block";
+        worldChat.style.display = "none";
+        privateBtn.style.backgroundColor = "#d7d7d7";
+        roomBtn.style.backgroundColor = "#5c9dff";
+        worldBtn.style.backgroundColor = "#d7d7d7";
+    }
+    function showWorld() {
+        privateChat.style.display = "none";
+        roomChat.style.display = "none";
+        worldChat.style.display = "block";
+        privateBtn.style.backgroundColor = "#d7d7d7";
+        roomBtn.style.backgroundColor = "#d7d7d7";
+        worldBtn.style.backgroundColor = "#5c9dff";
+    }
+
+    //实例化编辑器
+    var umWolrd = UM.getEditor('world-editor');
+</script>
+</html>

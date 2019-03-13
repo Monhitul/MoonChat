@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>临时版</title>
+</head>
+<body>
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>WebChat</title>
+    <!--<link href="themes/default/_css/umeditor.css" type="text/css" rel="stylesheet">-->
+    <!--<script type="text/javascript" src="third-party/jquery.min.js"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" src="umeditor.config.js"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" src="editor_api.js"></script>-->
+    <!--<script type="text/javascript" src="lang/zh-cn/zh-cn.js"></script>-->
+
+    <!--<link rel="stylesheet" type="text/css" href="css/user.css">-->
+    <!--<script type="text/javascript" src="js/user.js"></script>-->
+</head>
+<body>
+<div class="title">
+    <h1>MoonChat 简陋版</h1>
+</div>
+
+<div id="main">
+
+    <div id="friends-list">
+        <div id="list">
+            <div id="friend1" class="one-friend" onclick="getFriendUid(this)">
+                <!--<img src="images/avatar.PNG"/>-->
+                <div class="nickname">刘大头</div>
+                <div class="uid">liuBighead</div>
+            </div>
+            <div id="friend2" class="one-friend" onclick="getFriendUid(this)">
+                <div class="nickname">刘二蛋</div>
+                <div class="uid">liuErdan</div>
+            </div>
+            <div id="friend3" class="one-friend" onclick="getFriendUid(this)">
+                <div class="nickname">大脸蛋</div>
+                <div class="uid">bigLiandan</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="chat-content">
+        <div id="friend-name">好友名字</div>
+        <div id="show-content">
+            <!--<div class="own-info">-->
+                <!--我自己的消息-->
+            <!--</div>-->
+            <!--<div class="other-info">-->
+                <!--别人的消息-->
+            <!--</div>-->
+        </div>
+
+        <div>
+            <input id="content" type="text"/>
+            <button id="send-btn" onclick="toSend()">发送</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var userId = userInfo.uid;
+    var other = null;
+
+    window.onload = connectWebSocket();
+
+    function getFriendUid(data) {
+        var uidClass = data.getElementsByClassName("uid");
+        var nickClass = data.getElementsByClassName("nickname")
+        other = uidClass[0].textContent;
+        document.getElementById("friend-name").innerHTML = nickClass[0].textContent;
+    }
+    
+    //建立WebSocket连接
+    function connectWebSocket(){
+        console.log("开始...");
+
+        //建立webSocket连接
+        websocket = new WebSocket("ws://127.0.0.1/moonchat/socket/ID="+userId);
+
+        //打开webSokcet连接时，回调该函数
+        websocket.onopen = function () {
+            console.log("onpen");
+        }
+
+        //关闭webSocket连接时，回调该函数
+        websocket.onclose = function () {
+            //关闭连接
+            console.log("onclose");
+        }
+
+        //接收信息
+        websocket.onmessage = function (msg) {
+            console.log(msg.data);
+            var t = JSON.parse(msg.data);
+            console.log("t："+t);
+            console.log("tm："+t.message);
+            document.getElementById("show-content").innerHTML += msg.data;
+            document.getElementById("show-content").innerHTML += "<br>";
+        }
+    }
+
+    //发送消息
+    function toSend() {
+        var content = document.getElementById("content");
+        if(content.value == "")
+            alert("发送内容不能为空");
+        else{
+            var postValue={};
+            postValue.id = userId;
+            // postValue.message=$("#content").val();
+            postValue.message = content.value;
+            postValue.towho = other;
+            websocket.send(JSON.stringify(postValue));
+        }
+    }
+
+    //关闭连接
+    function closeWebSocket(){
+        if(websocket != null) {
+            websocket.close();
+        }
+    }
+</script>
+</body>
+</html>
