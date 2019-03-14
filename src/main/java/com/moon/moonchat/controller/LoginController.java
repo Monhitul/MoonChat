@@ -49,6 +49,23 @@ public class LoginController {
         return resMap;
     }
 
+    /**
+     * 判断用户注册时用户名是否重复
+     * @param user
+     * @return
+     */
+    @PostMapping(value="/checkUid")
+    public Map forCheckUid(@RequestBody User user){
+        System.out.println("开始检查用户名是否重复");
+        Map<String, Object> resMap = new HashMap<String, Object>();
+        boolean b = loginService.checkUid(user.getUid());
+        if(b)
+            resMap.put("success", "1");
+        else
+            resMap.put("success", "0");
+        return resMap;
+    }
+
     //测试
     @GetMapping("/test")
     public Map getSome(){

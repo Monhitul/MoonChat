@@ -18,8 +18,8 @@
     </select>
 
     <insert id="saveUser" parameterType="com.moon.moonchat.entity.User">
-        insert into moonchat.user (uid, password)
-        values (#{uid}, #{password})
+        insert into moonchat.user (uid, password, nickname)
+        values (#{uid}, #{password}, #{nickname})
     </insert>
 
     <delete id="deleteUser">
@@ -39,5 +39,10 @@
     <select id="selectFriend" resultType="com.moon.moonchat.entity.User">
         select uid, nickname, avatar, sex, createDate, lastTime from moonchat.user
         where uid=#{uid} and deleted=false
+    </select>
+
+    <select id="findUid" resultType="com.moon.moonchat.entity.User">
+        select uid from moonchat.user
+        where uid = #{uid} and deleted = false
     </select>
 </mapper>

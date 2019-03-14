@@ -50,4 +50,10 @@ public class LoginServiceImpl implements LoginService {
     public List<User> findFriends(String uid) {
         return null;
     }
+
+    @Override
+    public boolean checkUid(String uid) {
+        User res = userDao.findUid(uid);
+        return (res != null);
+    }
 }

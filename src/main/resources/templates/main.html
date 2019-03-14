@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <title>主页</title>
 
+    <!--<link rel="stylesheet" type="text/css" href="dialogs/emotion/emotion.css">-->
+
+    <!--<link href="themes/default/_css/umeditor.css" type="text/css" rel="stylesheet">-->
+    <!--<script type="text/javascript" src="third-party/jquery.min.js"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" src="umeditor.config.js"></script>-->
+    <!--<script type="text/javascript" charset="utf-8" src="editor_api.js"></script>-->
+
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/world.css">
     <script type="text/javascript" src="js/world.js"/>
+
 </head>
 <body>
     <div id="infor-head">
@@ -32,13 +40,13 @@
             <div id="world-content">
 
             </div>
-            <!--<div>-->
-                <!--<input type="text" id="world-input">-->
-                <!--<button onclick="worldSend()">发送</button>-->
-            <!--</div>-->
-            <div type="text/plain" id="world-editor" style="width:705px;height:100px;overflow: hidden;">
+            <div>
+                <input type="text" id="world-input">
+                <button onclick="worldSend()">发送</button>
             </div>
-            <button onclick="worldSend()">发送</button>
+            <!--<div type="text/plain" id="world-editor" style="width:705px;height:100px;">-->
+            <!--</div>-->
+            <!--<button onclick="worldSend()">发送</button>-->
         </div>
     </div>
 </body>
@@ -79,6 +87,7 @@
     }
 
     //实例化编辑器
-    var umWolrd = UM.getEditor('world-editor');
+    // umWolrd = UM.getEditor('world-editor');
+
 </script>
 </html>

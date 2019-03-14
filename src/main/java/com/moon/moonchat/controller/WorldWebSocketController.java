@@ -24,8 +24,9 @@ public class WorldWebSocketController extends TextWebSocketHandler {
         LinkedSessions.add(session);
         String payload = message.getPayload();
         Map<String, String> msgMap = JSONObject.parseObject(payload, HashMap.class);    //收到的内容
+        System.out.println(msgMap);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        if(!"lin".equals(msgMap.get("dest"))) {
+        if(!"lin".equals(msgMap.get("dest"))) {     //lin表示用于客户与服务端建立连接的第一次请求
             Message backMessage = new Message(msgMap.get("src"), msgMap.get("dest"), msgMap.get("srcname"), msgMap.get("msg"), sdf.format(new Date()));
             String backStr = JSONObject.toJSON(backMessage).toString();
 

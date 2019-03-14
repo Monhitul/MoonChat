@@ -36,7 +36,7 @@
     align-items: center;
 }
 #private-chat, #chat-room, #world{
-    width: 70%;
+    width: 52%;
     height: 600px;
     /*border: 1px solid #000000;*/
 }

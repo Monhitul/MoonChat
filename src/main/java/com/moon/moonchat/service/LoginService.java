@@ -19,4 +19,6 @@ public interface LoginService {
     User findFriend(String uid);
 
     List<User> findFriends(String uid);
+
+    boolean checkUid(String uid);
 }

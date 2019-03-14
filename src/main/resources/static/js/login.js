@@ -96,6 +96,7 @@ function toEntry() {
                     // var url = "http://127.0.0.1/moonchat/index/goto";
                     // var url = "http://127.0.0.1/moonchat/index/temp";   //简陋版
                     var url = "http://127.0.0.1/moonchat/index/main";       //集成版
+                    // document.load(url);
                     $("body").load(url);
                 }else{
                     document.getElementById("entry_tip").innerHTML="登录失败，请检查账号密码是否正确";

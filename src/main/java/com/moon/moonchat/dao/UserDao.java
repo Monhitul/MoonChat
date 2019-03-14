@@ -23,4 +23,6 @@ public interface UserDao {
     User selectFriend(String uid);    //用于查找好友
 
     List<User> selectFriends(String uid); //用于查询好友列表，需要另外一个表
+
+    User findUid(String uid);
 }
