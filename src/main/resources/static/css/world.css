@@ -1,8 +1,8 @@
 #world-title{
-    width: 100%;
+    width: 101%;
     height: 25px;
     line-height: 25px;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
     background-color: #e5edff;
 }
@@ -13,12 +13,11 @@
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 10px;
-    font-size: 15px;
+    font-size: 14px;
     border: 0.5px solid rgba(172,184,219,0.95);
 }
 #world-input{
-    width: 450px;
-    height: 40px;
+    width: 440px;
     font-size: 15px;
 }
 #world-editor{
